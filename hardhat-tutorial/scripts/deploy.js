@@ -7,7 +7,7 @@ async function main() {
   A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
   so BlockTokenContract here is a factory for instances of our BlockToken contract.
   */
-  const blockTokenContract = await ethers.getContractFactory("BlockTETHoken");
+  const blockTokenContract = await ethers.getContractFactory("BlockETHToken");
   const nftContract = await ethers.getContractFactory("ArtItem");
 
   // URL from where we can extract the metadata for a Crypto Dev NFT
