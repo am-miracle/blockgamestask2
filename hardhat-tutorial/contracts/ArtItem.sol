@@ -1,43 +1,28 @@
+//Contract based on [https://docs.openzeppelin.com/contracts/3.x/erc721](https://docs.openzeppelin.com/contracts/3.x/erc721)
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// Import the openzepplin contracts
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
-// ArtItem is  ERC721 signifies that the contract we are creating imports ERC721 and follows ERC721 contract from openzeppelin
-contract ArtItem is ERC721 {
+contract ArtItem is ERC721URIStorage, Ownable {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
 
-    constructor(string memory baseURI) ERC721("ArtItem", "ITM") {
-        // mint an NFT to yourself
-        _mint(msg.sender, 1);
-        _baseTokenURI = baseURI;
+    constructor() ERC721("ArtItem", "ATI") {}
 
-    }
-    //  function _baseURI() internal pure override returns (string memory) {
-    //      return string[] = "";
-    //  }
-           /**
-       * @dev _baseTokenURI for computing {tokenURI}. If set, the resulting URI for each
-       * token will be the concatenation of the `baseURI` and the `tokenId`.
-       */
-      string _baseTokenURI;
+    function mintNFT(address recipient, string memory tokenURI)
+        public onlyOwner
+        returns (uint256)
+    {
+        _tokenIds.increment();
 
-      //  _price is the price of one ArtItem NFT
-      uint256 public _price = 0.01 ether;
+        uint256 newItemId = _tokenIds.current();
+        _mint(recipient, newItemId);
+        _setTokenURI(newItemId, tokenURI);
 
-      // max number of ArtItem
-      uint256 public maxTokenIds = 2;
-
-      // total number of tokenIds minted
-      uint256 public tokenIds;
-
-    function mint() public payable {
-        require(tokenIds < maxTokenIds, "Exceed maximum ArtItem supply");
-        require(msg.value >= _price, "Ether sent is not correct");
-        tokenIds += 1;
-        _safeMint(msg.sender, tokenIds);
-    }
-    function _baseURI() internal view virtual override returns (string memory) {
-        return _baseTokenURI;
+        return newItemId;
     }
 }

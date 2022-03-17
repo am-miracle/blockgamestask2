@@ -5,21 +5,21 @@ require("dotenv").config({ path: ".env" });
 async function main() {
   /*
   A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
-  so BlockTokenContract here is a factory for instances of our CryptoDevs contract.
+  so BlockTokenContract here is a factory for instances of our BlockToken contract.
   */
-  const blockTokenContract = await ethers.getContractFactory("BlockToken");
-  // const nftContract = await ethers.getContractFactory("ArtItem");
+  const blockTokenContract = await ethers.getContractFactory("BlockTETHoken");
+  const nftContract = await ethers.getContractFactory("ArtItem");
 
   // URL from where we can extract the metadata for a Crypto Dev NFT
   // const metadataURL = METADATA_URL;
 
   // deploy the contract
-  const deployedBlockTokenContract = await blockTokenContract.deploy("Block ETH Token", "BET");
-  // const deployedNFTContract = await nftContract.deploy(metadataURL);
+  const deployedBlockTokenContract = await blockTokenContract.deploy();
+  const deployedNFTContract = await nftContract.deploy();
 
   // print the address of the deployed contract
   console.log("BlockToken Contract Address:", deployedBlockTokenContract.address);
-  // console.log("NFT Contract Address:", deployedNFTContract.address);
+  console.log("NFT Contract Address:", deployedNFTContract.address);
 }
 
 // Call the main function and catch if there is any error
