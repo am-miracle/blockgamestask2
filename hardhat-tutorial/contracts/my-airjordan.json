@@ -1,6 +1,6 @@
 pragma solidity ^0.8.4;
 
-struct external Metadata{
+struct external MetadataStruc{
     "name" : "Air Jordan",
     "image" : "https://ipfs.io/ipfs/QmXghg9hJ2dY8g2knUHmY3JvYXjPdZGDMUN93U5YBYu8KL",
     "description": "my image of etherscan for blockgames"

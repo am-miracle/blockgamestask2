@@ -3,7 +3,7 @@ pragma solidity ^0.8.4;
 
 contract BlockETHToken {
 
-    mapping(address => uint256) public balanceOf;
+    mapping(address => uint256) public _balances;
     mapping(address => mapping(address => uint256)) public allowance;
 
     string public name;
@@ -19,26 +19,26 @@ contract BlockETHToken {
         name = "BlockETHToken";
         symbol = "BET";
         totalSupply = 1000000; 
-        balanceOf[msg.sender] = totalSupply;
+        _balances[msg.sender] = totalSupply;
     }
  
     function transfer(address _to, uint256 _amount) external returns (bool sucess) {
-        require(balanceOf[msg.sender] >= _amount);
+        require(_balances[msg.sender] >= _amount);
         _transfer(msg.sender, _to, _amount);
         return true;
     }
 
     function buyToken(address _reciever, uint256 _amount) external payable returns (bool sucess) {
         require(_balances[msg.sender] >= _amount * tokensPerEth);
-        balanceOf[_reciever] = balanceOf[_reciever] + (_amount* tokensPerEth);
+        _balances[_reciever] = _balances[_reciever] + (_amount* tokensPerEth);
         _transfer(msg.sender, _reciever, _amount* tokensPerEth);
         return true;
     }
 
     function _transfer(address _from, address _to, uint256 _amount) internal {
         require(_to != address(0));
-        balanceOf[_from] = balanceOf[_from] - (_amount);
-        balanceOf[_to] = balanceOf[_to] + (_amount);
+        _balances[_from] = _balances[_from] - (_amount);
+        _balances[_to] = _balances[_to] + (_amount);
         emit Transfer(_from, _to, _amount);
     }
 }
