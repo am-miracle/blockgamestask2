@@ -1,5 +1,8 @@
-require("@nomiclabs/hardhat-waffle");
-require("dotenv").config({ path: ".env" });
+/**
+* @type import('hardhat/config').HardhatUserConfig
+*/
+require('dotenv').config();
+require("@nomiclabs/hardhat-ethers");
 
 const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
 

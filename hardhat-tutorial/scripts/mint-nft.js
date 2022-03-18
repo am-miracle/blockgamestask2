@@ -1,14 +1,14 @@
 require("dotenv").config()
-const API_URL = process.env.API_URL;
+const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
-const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY;
 
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
-const web3 = createAlchemyWeb3(API_URL)
+const web3 = createAlchemyWeb3(ALCHEMY_API_KEY_URL)
 
 const contract = require("../artifacts/contracts/ArtItem.sol/ArtItem.json");
 
-const contractAddress = "0xa83E21BCa7279CdE0F05f61f0928BA8275A7D794";
+const contractAddress = "0xfEB39B3ed9D2491E348650E40386c36Ca30Cf796";
 
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 

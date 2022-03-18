@@ -13,10 +13,7 @@ contract ArtItem is ERC721URIStorage, Ownable {
 
     constructor() ERC721("ArtItem", "ATI") {}
 
-    function mintNFT(address recipient, string memory tokenURI)
-        public onlyOwner
-        returns (uint256)
-    {
+    function mintNFT(address recipient, string memory tokenURI) public onlyOwner returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
