@@ -3,6 +3,7 @@
 */
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 
 const ALCHEMY_API_KEY_URL = process.env.ALCHEMY_API_KEY_URL;
 
@@ -15,5 +16,10 @@ module.exports = {
       url: ALCHEMY_API_KEY_URL,
       accounts: [RINKEBY_PRIVATE_KEY],
     },
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: etherscanApiKey
   },
 };
