@@ -1,7 +1,7 @@
 # Basic Sample Hardhat Project
 
 ## Verify and deployed ERC-20 token 
-[BlockEthToken](https://rinkeby.etherscan.io/address/0xf7ef72cAAAD353Bb40eE8831c9D27eBb17d70c8A#code)
+[BlockEthToken](https://rinkeby.etherscan.io/address/0x1Fd797b361EE60d74262731aF98411BD87571A71#code)
 
 ## Verify and deployed ERC-721 - 
 0xa83E21BCa7279CdE0F05f61f0928BA8275A7D794

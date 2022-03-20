@@ -7,18 +7,18 @@ async function main() {
   A ContractFactory in ethers.js is an abstraction used to deploy new smart contracts,
   so BlockTokenContract here is a factory for instances of our BlockToken contract.
   */
-  const blockTokenContract = await ethers.getContractFactory("BlockETHToken");
+  const blockTokenContract = await ethers.getContractFactory("AnderToK");
   const nftContract = await ethers.getContractFactory("ArtItem");
 
   // URL from where we can extract the metadata for a Crypto Dev NFT
   // const metadataURL = METADATA_URL;
 
   // deploy the contract
-  const deployedBlockTokenContract = await blockTokenContract.deploy("BlockGATok", "BGT", BigInt(1000000 * 10 ** 18));
+  const deployedBlockTokenContract = await blockTokenContract.deploy(1000000);
   const deployedNFTContract = await nftContract.deploy();
 
   // print the address of the deployed contract
-  console.log("BlockToken Contract Address:", deployedBlockTokenContract.address);
+  console.log("AnderToK Contract Address:", deployedBlockTokenContract.address);
   console.log("NFT Contract Address:", deployedNFTContract.address);
 }
 

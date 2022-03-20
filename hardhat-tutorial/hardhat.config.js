@@ -11,6 +11,9 @@ const ETHERSCAN_API_KEY = process.env. ETHERSCAN_API_KEY;
 
 module.exports = {
   solidity: "0.8.4",
+  paths: {                         
+    artifacts: './artifacts', 
+  },
   networks: {
     rinkeby: {
       url: ALCHEMY_API_KEY_URL,
