@@ -14,7 +14,7 @@ async function main() {
   // const metadataURL = METADATA_URL;
 
   // deploy the contract
-  const deployedBlockTokenContract = await blockTokenContract.deploy();
+  const deployedBlockTokenContract = await blockTokenContract.deploy("BlockGATok", "BGT", BigInt(1000000 * 10 ** 18));
   const deployedNFTContract = await nftContract.deploy();
 
   // print the address of the deployed contract
